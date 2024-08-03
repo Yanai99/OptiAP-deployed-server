@@ -1,7 +1,6 @@
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import numpy as np
-from kneed import KneeLocator
 
 # For connecting (x,y) coordinates with rssi before sending it to k-means
 def prepare_single_measure_data(coordinates, measure_data, coordinates_dic):
@@ -49,10 +48,6 @@ def k_means_algorithm(data_for_k_means):
         print("Not enough data to determine the elbow point.")
         return
 
-    # Uncomment the following lines if you want to use KneeLocator
-    # kn = KneeLocator(list(k_values), wcss, curve='convex', direction='decreasing')
-    # chosen_num_of_aps = kn.elbow
-    # if chosen_num_of_aps is None:
     chosen_num_of_aps = 1
 
     # if chosen_num_of_aps > 10:
