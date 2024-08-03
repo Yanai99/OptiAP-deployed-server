@@ -1,3 +1,6 @@
+
+# A very simple Flask Hello World app for you to get started with...
+
 from flask import Flask
 from k_means import k_means_algorithm
 from measure_distance import average_trilateration, create_distance_coordinates_list
