@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from measure_distance import average_trilateration, create_distance_coordinates_list
+from k_means import k_means_algorithm
 
 app = Flask(__name__)
 
