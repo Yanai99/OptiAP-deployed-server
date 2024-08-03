@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from kneed import KneeLocator
 
-
 # For connecting (x,y) coordinates with rssi before sending it to k-means
 def prepare_single_measure_data(coordinates, measure_data, coordinates_dic):
     x, y = coordinates
@@ -23,16 +22,9 @@ def prepare_single_measure_data(coordinates, measure_data, coordinates_dic):
     # Return the prepared data including coordinates and sorted RSSI values
     return [x, y] + [item[2] for item in measure_data_sorted]
 
-
 # for extracting the (x,y) from each k-means cluster
-def extract_first_two_elements(list_of_lists):
-    return [[int(round(sublist[0])), int(round(sublist[1]))] for sublist in list_of_lists]
-
-
 def extract_first_two_elements(arrays):
     return [arr[:2].tolist() for arr in arrays]  # Use tolist() to convert numpy arrays to Python lists
-
-
 
 def k_means_algorithm(data_for_k_means):
     if not data_for_k_means or len(data_for_k_means) < 1:
@@ -57,13 +49,14 @@ def k_means_algorithm(data_for_k_means):
         print("Not enough data to determine the elbow point.")
         return
 
-    #kn = KneeLocator(list(k_values), wcss, curve='convex', direction='decreasing')
-    #chosen_num_of_aps = kn.elbow
-    #if chosen_num_of_aps is None:
+    # Uncomment the following lines if you want to use KneeLocator
+    # kn = KneeLocator(list(k_values), wcss, curve='convex', direction='decreasing')
+    # chosen_num_of_aps = kn.elbow
+    # if chosen_num_of_aps is None:
     chosen_num_of_aps = 1
 
-    #if chosen_num_of_aps > 10:
-     #   chosen_num_of_aps = 10
+    # if chosen_num_of_aps > 10:
+    #    chosen_num_of_aps = 10
 
     print("Optimal number of clusters:", chosen_num_of_aps)
 
